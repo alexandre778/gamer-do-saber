@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========================= */
+/* 🎮 BOTÕES DO JOGO */
+/* ========================= */
+
+.btn {
+  @apply bg-blue-700 text-white p-3 rounded-xl flex items-center gap-3 transition-all duration-200 shadow-md cursor-pointer;
+}
+
+.btn:hover {
+  @apply bg-blue-600 scale-105 shadow-lg;
+}
+
+.btn:active {
+  @apply scale-95;
+}
+
+.btn:focus {
+  @apply outline-none ring-2 ring-yellow-400;
+}
+
+/* ========================= */
+/* 🎯 CARDS (tela inicial) */
+/* ========================= */
+
+.card {
+  @apply p-6 bg-white rounded-2xl shadow-lg text-xl text-center cursor-pointer transition-all duration-200;
+}
+
+.card:hover {
+  @apply scale-105 shadow-xl;
+}
+
+.card:active {
+  @apply scale-95;
+}
+
+/* ========================= */
+/* ✨ ANIMAÇÃO GAME */
+/* ========================= */
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1.05); }
+}
+
+.btn:hover {
+  animation: pulse 0.4s ease-in-out;
+}
