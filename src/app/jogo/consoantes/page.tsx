@@ -76,7 +76,7 @@ export default function Consoantes() {
           <button
             key={letra}
             onClick={() => falarConsoante(letra)}
-            className="w-28 h-28 md:w-32 md:h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center text-6xl md:text-7xl font-bold text-blue-600 hover:scale-110 active:scale-95 transition-transform border-b-8 border-blue-200"
+            className="w-28 h-28 md:w-32 md:h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center text-6xl md:text-7xl font-bold text-yellow-500 hover:scale-110 active:scale-95 transition-transform border-b-8 border-yellow-200"
           >
             {letra}
           </button>

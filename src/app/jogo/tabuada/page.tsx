@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Tabuada() {
-  const [resultado, setResultado] = useState<string | null>(null);
+  const [idAtivo, setIdAtivo] = useState<string | null>(null);
 
   const multiplicandos = [1, 2, 3, 4, 5];
   const multiplicadores = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -21,7 +21,7 @@ export default function Tabuada() {
   const calcular = (a: number, b: number) => {
     const res = a * b;
     const texto = `${a} vezes ${b} é igual a ${res}`;
-    setResultado(`${a} x ${b} = ${res}`);
+    setIdAtivo(`${a}-${b}`);
     falar(texto);
   };
 
@@ -32,27 +32,29 @@ export default function Tabuada() {
         🔢 Tabuada do 1 ao 5
       </h1>
 
-      {/* Grid de contas */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
-        {multiplicandos.map((a) =>
-          multiplicadores.map((b) => (
-            <button
-              key={`${a}-${b}`}
-              onClick={() => calcular(a, b)}
-              className="bg-white w-24 h-20 rounded-2xl shadow-md text-xl font-bold text-green-700 hover:scale-110 transition"
-            >
-              {a} x {b}
-            </button>
-          )),
-        )}
+      {/* Colunas de Tabuada */}
+      <div className="flex flex-wrap justify-center gap-6 mb-12">
+        {multiplicandos.map((a) => (
+          <div
+            key={a}
+            className="flex flex-col gap-3 bg-white p-4 rounded-3xl shadow-xl border-b-8 border-green-200"
+          >
+            <h2 className="text-2xl font-extrabold text-green-600 text-center mb-2">
+              Tabuada do {a}
+            </h2>
+            {multiplicadores.map((b) => (
+              <button
+                key={`${a}-${b}`}
+                onClick={() => calcular(a, b)}
+                className="bg-green-50 min-w-[140px] h-14 rounded-xl text-lg font-bold text-green-700 hover:scale-105 active:scale-95 transition-transform border-2 border-green-100 px-2"
+              >
+                {a} x {b}
+                {idAtivo === `${a}-${b}` ? ` = ${a * b}` : ''}
+              </button>
+            ))}
+          </div>
+        ))}
       </div>
-
-      {/* Resultado */}
-      {resultado && (
-        <div className="text-3xl font-bold text-green-900 mb-8 bg-white px-6 py-4 rounded-xl shadow-lg">
-          {resultado}
-        </div>
-      )}
 
       {/* Botão voltar */}
       <Link

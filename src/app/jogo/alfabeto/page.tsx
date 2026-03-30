@@ -77,15 +77,22 @@ export default function Alfabeto() {
 
       {/* Botões do alfabeto */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-6 mb-12">
-        {alfabeto.map((letra) => (
-          <button
-            key={letra}
-            onClick={() => falarLetra(letra)}
-            className="w-28 h-28 md:w-32 md:h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center text-6xl md:text-7xl font-bold text-blue-600 hover:scale-110 active:scale-95 transition-transform border-b-8 border-blue-200"
-          >
-            {letra}
-          </button>
-        ))}
+        {alfabeto.map((letra) => {
+          const isVogal = ['A', 'E', 'I', 'O', 'U'].includes(letra);
+          return (
+            <button
+              key={letra}
+              onClick={() => falarLetra(letra)}
+              className={`w-28 h-28 md:w-32 md:h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center text-6xl md:text-7xl font-bold hover:scale-110 active:scale-95 transition-transform border-b-8 ${
+                isVogal
+                  ? 'text-blue-600 border-blue-200'
+                  : 'text-yellow-500 border-yellow-200'
+              }`}
+            >
+              {letra}
+            </button>
+          );
+        })}
       </div>
 
       {/* Botão voltar para opções */}
