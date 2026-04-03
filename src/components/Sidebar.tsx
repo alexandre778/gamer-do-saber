@@ -74,6 +74,12 @@ export default function Sidebar() {
         >
           ✖️ Tabuada
         </button>
+        <button
+          onClick={() => ir('/jogo/libras')}
+          className="btn flex-1 min-w-[120px] md:w-full py-2 md:py-3 text-sm md:text-base"
+        >
+          🤟 Libras
+        </button>
       </div>
     </div>
   );

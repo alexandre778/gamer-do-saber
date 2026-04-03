@@ -39,6 +39,7 @@ export default function Jogo() {
         <Opcao titulo="Números" tipo="numeros" />
         <Opcao titulo="Cores" tipo="cores" />
         <Opcao titulo="Tabuada" tipo="tabuada" />
+        <Opcao titulo="Libras" tipo="libras" />
       </div>
     </div>
   );

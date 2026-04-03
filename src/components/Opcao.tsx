@@ -4,7 +4,14 @@ import { useRouter } from 'next/navigation';
 
 interface OpcaoProps {
   titulo: string;
-  tipo: 'vogais' | 'consoantes' | 'alfabeto' | 'numeros' | 'cores' | 'tabuada';
+  tipo:
+    | 'vogais'
+    | 'consoantes'
+    | 'alfabeto'
+    | 'numeros'
+    | 'cores'
+    | 'tabuada'
+    | 'libras';
 }
 
 export default function Opcao({ titulo, tipo }: OpcaoProps) {
@@ -17,12 +24,15 @@ export default function Opcao({ titulo, tipo }: OpcaoProps) {
     numeros: '🔢',
     cores: '🎨',
     tabuada: '✖️',
+    libras: '🤟',
   };
 
   // 🔊 Som de clique (efeito game) - Mantendo consistência com o Sidebar
   const tocarSomClick = () => {
     const AudioContextClass =
-      window.AudioContext || (window as any).webkitAudioContext;
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext;
     if (!AudioContextClass) return;
 
     const ctx = new AudioContextClass();
